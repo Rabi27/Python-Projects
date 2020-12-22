@@ -1,15 +1,15 @@
-import tkinter as Tk
 from tkinter import *
-from tkinter.filedialog import *
+from tkinter import filedialog
 from tkinter.scrolledtext import ScrolledText
 
 class NotePad:
 
     def __init__(self,root):
         self.root = root
+
         #creating a menubar
         menubar = Menu(root)
-        filemenu = Menu(menubar,teroff=0)
+        filemenu = Menu(menubar,tearoff=0)
         filemenu.add_command(label="New",command=self.new_file)
         filemenu.add_command(label="Open",command=self.open_file)
         filemenu.add_command(label="Save",command=self.save)
@@ -27,7 +27,7 @@ class NotePad:
         self.filename = None
 
     def open_file(self,*args):
-        self.filename = askopenfilename(
+        self.filename = filedialog.askopenfilename(
             defaultextension = ".txt",
             filetypes=[('All Files','*.*'),
                         ('Text Files','*.txt'),
@@ -53,7 +53,7 @@ class NotePad:
 
     def save_as(self,*args):
         try:
-            new_file = asksaveasfilename(
+            new_file = filedialog.asksaveasfilename(
                 initialfile = "Untitled.txt",
                 defaultextension = ".txt",
                 filetypes=[('All Files','*.*'),
@@ -70,7 +70,7 @@ class NotePad:
 
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     root = Tk()
     root.title("NotePad with Python")
     root.geometry("500x500")
